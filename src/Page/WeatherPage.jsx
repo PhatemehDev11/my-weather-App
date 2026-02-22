@@ -1,3 +1,7 @@
+import Forecast from "../components/ForecastSection/Forecast"
+import SearchBar from "../components/SearchBar/searchBar"
+import WeatherCard from "../components/WeatherCard/weatherCard"
+
 function WeatherPage() {
 
     return(
@@ -5,14 +9,21 @@ function WeatherPage() {
      <div  className="
        min-h-screen 
       bg-gradient-to-br 
-      from-sky-300 
-      via-sky-200 
-      to-red-300 
+      from-sky-500 
+      via-sky-300 
+      to-red-400 
       flex 
       flex-col 
       items-center 
       py-12
-     "></div>
+     ">
+    
+    <SearchBar/>
+    <WeatherCard/>
+    <Forecast/>
+
+
+     </div>
    </>
     )
     
