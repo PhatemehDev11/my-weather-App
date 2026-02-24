@@ -2,7 +2,16 @@ import Forecast from "../components/ForecastSection/Forecast"
 import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
 
+
 function WeatherPage() {
+
+
+
+
+ 
+
+
+
 
     return(
    <>
