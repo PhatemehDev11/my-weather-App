@@ -1,17 +1,26 @@
 import Forecast from "../components/ForecastSection/Forecast"
 import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
+import { useEffect } from "react"
+import { fetchWeather } from "../service/weatherApi"
 
 
 function WeatherPage() {
 
-
+useEffect(()=> {
+async function getDate() {
+  try {
+    const data = await fetchWeather("Sari");
+    console.log("weather Data", data)
+  } catch (error) {
+    console.error(error)
+  }
+}
+getDate();
+},[]);
 
 
  
-
-
-
 
     return(
    <>
