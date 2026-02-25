@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
 import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
-
+import buloon from "../assets/buloon.gif"
 
 function WeatherPage() {
 
@@ -11,6 +11,7 @@ function WeatherPage() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
     async function getDate() {
@@ -34,9 +35,8 @@ function WeatherPage() {
 
   // get user Location 
   const getUserLocation = () => {
-    if (!navigator.geolocation) {
-      setError("geoLocation not supported ")
-    }
+    if (!navigator.geolocation) return;
+    setLocating(true);
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -44,9 +44,10 @@ function WeatherPage() {
         const lon = position.coords.longitude;
 
         setCity(`${lat},${lon}`);
+        setLocating(false);
       },
       () => {
-        setError("Unable to retrieve location")
+        setLocating(false);
       }
     )
   }
@@ -75,6 +76,8 @@ function WeatherPage() {
 
 
         <Forecast />
+
+       
 
 
       </div>
