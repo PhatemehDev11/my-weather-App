@@ -31,6 +31,26 @@ getDate();
 
  
 
+
+// get user Location 
+const getUserLocation = () => {
+  if (!navigator.geolocation){
+    setError("geoLocation not supported ")
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) =>{
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      setCity(`${lat},${lon}`);
+    },
+   () => {
+    setError("Unable to retrieve location")
+   }
+  )
+}
+
     return(
    <>
 
