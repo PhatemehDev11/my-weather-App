@@ -22,17 +22,23 @@ function WeatherCard({data}) {
         p-8
         text-center
         text-white
+        flex 
+        items-center
+        justify-center
+        flex-col
       ">
         <h1 className="text-7xl   text-sky-600 font-bold mb-4">{temp}°</h1>
 
         <img
          src={icon}
-         alt={condition}/>
+         alt={condition}
+         
+         />
   
         <p className="text-2xl font-semibold">{condition}</p>
         <p className="text-lg opacity-80 mb-6">{city}, {country}</p>
   
-        <div className="border-t border-sky-600 pt-4 flex justify-between text-l font-bold">
+        <div className="border-t border-sky-600 pt-4 flex justify-between text-l font-bold  w-[98%]">
           <span>💧 {humidity}%</span>
           <span>🌬 {wind} km/h</span>
           <span>Feels {feelsLike}°</span>
