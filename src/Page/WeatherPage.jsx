@@ -1,19 +1,27 @@
 import Forecast from "../components/ForecastSection/Forecast"
 import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
 
 
 function WeatherPage() {
 
+  const [weather,setWeather] = useState(null);
+  const [loading,setLoading]  = useState(false);
+  const [error,setError] = useState(null);
+
 useEffect(()=> {
 async function getDate() {
   try {
+    setLoading(true)
+     setError(null)
     const data = await fetchWeather("Sari");
-    console.log("weather Data", data)
+    setWeather(data);
   } catch (error) {
-    console.error(error)
+    setError("Failed to fetch weather data");
+  } finally{
+    setLoading(false)
   }
 }
 getDate();
@@ -24,6 +32,8 @@ getDate();
 
     return(
    <>
+
+
      <div  className="
        min-h-screen 
       bg-gradient-to-br 
@@ -37,7 +47,9 @@ getDate();
      ">
     
     <SearchBar/>
-    <WeatherCard/>
+    {loading && <p className="text-white text-lg">Loading...</p>}
+    {error && <p className="text-red-600">{error}</p>} 
+    {weather && <WeatherCard data={weather} />}
     <Forecast/>
 
 
