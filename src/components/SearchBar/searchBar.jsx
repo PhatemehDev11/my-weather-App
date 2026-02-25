@@ -1,6 +1,14 @@
-function SearchBar() {
-    return (
-      <div className="
+function SearchBar({ city, setCity }) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!city.trim()) return;
+  };
+
+  return (
+    <form 
+      onSubmit={handleSubmit}
+      className="
         w-[600px] 
         bg-white/30 
         backdrop-blur-lg 
@@ -11,20 +19,25 @@ function SearchBar() {
         px-6 
         py-3 
         mb-10
-      ">
-        <input
-          type="text"
-          placeholder="Search city..."
-          className="
-            flex-1 
-            bg-transparent 
-            outline-none 
-            text-sky-900
-            placeholder-sky-600
-          "
-        />
-  
-        <button className="
+      "
+    >
+      <input
+        type="text"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="Search city..."
+        className="
+          flex-1 
+          bg-transparent 
+          outline-none 
+          text-sky-900
+          placeholder-sky-600
+        "
+      />
+
+      <button 
+        type="submit"
+        className="
           bg-white/40 
           px-4 
           py-2 
@@ -32,12 +45,12 @@ function SearchBar() {
           text-sky-900
           hover:bg-white/60 
           transition
-        ">
-          Location
-        </button>
-      </div>
-    );
-  }
+        "
+      >
+        Search
+      </button>
+    </form>
+  );
+}
 
-  
-  export default SearchBar;
+export default SearchBar;

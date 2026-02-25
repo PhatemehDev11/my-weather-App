@@ -7,6 +7,7 @@ import { fetchWeather } from "../service/weatherApi"
 
 function WeatherPage() {
 
+  const [city, setCity] = useState(null);
   const [weather,setWeather] = useState(null);
   const [loading,setLoading]  = useState(false);
   const [error,setError] = useState(null);
@@ -16,7 +17,7 @@ async function getDate() {
   try {
     setLoading(true)
      setError(null)
-    const data = await fetchWeather("Sari");
+    const data = await fetchWeather(city);
     setWeather(data);
   } catch (error) {
     setError("Failed to fetch weather data",error);
@@ -25,7 +26,7 @@ async function getDate() {
   }
 }
 getDate();
-},[]);
+},[city]);
 
 
  
@@ -46,7 +47,7 @@ getDate();
       py-12
      ">
     
-    <SearchBar/>
+    <SearchBar city={city}  setCity={setCity}/>
 
     {loading && <p className="text-white text-lg">Loading...</p>}
     {error && <p className="text-red-600">{error}</p>} 

@@ -32,7 +32,7 @@ function WeatherCard({data}) {
         <img
          src={icon}
          alt={condition}
-         
+         className="w-[6rem]"
          />
   
         <p className="text-2xl font-semibold">{condition}</p>
