@@ -11,7 +11,7 @@ function WeatherPage() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [locating, setLocating] = useState(false);
+  const [locating , setLocating] = useState(false);
 
   useEffect(() => {
     async function getDate() {
