@@ -4,6 +4,7 @@ import WeatherCard from "../components/WeatherCard/weatherCard"
 import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
 import buloon from "../assets/buloon.gif"
+import { CiCloudOn } from "react-icons/ci";
 
 function WeatherPage() {
 
@@ -71,8 +72,9 @@ function WeatherPage() {
         <SearchBar city={city} setCity={setCity} getUserLocation={getUserLocation} />
 
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <img src={buloon} alt="Loading..." className="w-24 h-24" />
+          <div className="flex justify-center items-center h-64  transition ">
+             <CiCloudOn style={{ animation: "spin 3s linear infinite" }}
+              className="text-sky-500    w-[20rem]  h-[20rem]  "/>
           </div>
         ) : (
           weather && <WeatherCard data={weather} />
