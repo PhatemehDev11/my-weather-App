@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
 import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
-import buloon from "../assets/buloon.gif"
+
 
 function WeatherPage() {
 
@@ -11,7 +11,7 @@ function WeatherPage() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [locating, setLocating] = useState(false);
 
   useEffect(() => {
     async function getDate() {
