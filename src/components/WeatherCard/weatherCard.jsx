@@ -5,6 +5,10 @@ function WeatherCard({data}) {
     const temp = data.current.temp_c;
     const condition = data.current.condition.text;
     const icon =data.current.condition.icon;
+    const humidity = data.current.humidity;
+    const wind = data.current.wind_kph;
+    const feelsLike = data.current.feelslike_c;
+
     
 
 
@@ -29,9 +33,9 @@ function WeatherCard({data}) {
         <p className="text-lg opacity-80 mb-6">{city}, {country}</p>
   
         <div className="border-t border-sky-600 pt-4 flex justify-between text-l font-bold">
-          <span>💧 40%</span>
-          <span>🌬 12 km/h</span>
-          <span>°</span>
+          <span>💧 {humidity}%</span>
+          <span>🌬 {wind} km/h</span>
+          <span>Feels {feelsLike}°</span>
         </div>
       </div>
     );
