@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
 import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
-
+import buloon from "../assets/buloon.gif"
 
 function WeatherPage() {
 
@@ -11,7 +11,7 @@ function WeatherPage() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [locating , setLocating] = useState(false);
+
 
   useEffect(() => {
     async function getDate() {
@@ -35,8 +35,8 @@ function WeatherPage() {
 
   // get user Location 
   const getUserLocation = () => {
-    if (!navigator.geolocation) return;
-    setLocating(true);
+    if (!navigator.geolocation) true;
+    setLoading(true);
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -44,10 +44,10 @@ function WeatherPage() {
         const lon = position.coords.longitude;
 
         setCity(`${lat},${lon}`);
-        setLocating(false);
+        setLoading(false)
       },
       () => {
-        setLocating(false);
+        setLoading(false)
       }
     )
   }
@@ -68,17 +68,23 @@ function WeatherPage() {
       py-12
      ">
 
-        <SearchBar city={city} setCity={setCity}
-          getUserLocation={getUserLocation}    locating={locating}  />
+        <SearchBar city={city} setCity={setCity} getUserLocation={getUserLocation} />
 
-        {loading && <p className="text-white text-lg">Loading...</p>}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <img src={buloon} alt="Loading..." className="w-24 h-24" />
+          </div>
+        ) : (
+          weather && <WeatherCard data={weather} />
+        )}
+
         {error && <p className="text-red-600">{error}</p>}
-        {weather && <WeatherCard data={weather} />}
+      
 
 
         <Forecast />
 
-       
+
 
 
       </div>
