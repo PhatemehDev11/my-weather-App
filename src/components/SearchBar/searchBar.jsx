@@ -1,4 +1,4 @@
-function SearchBar({ city, setCity }) {
+function SearchBar({ city, setCity , getUserLocation}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +36,8 @@ function SearchBar({ city, setCity }) {
       />
 
       <button 
-        type="submit"
+        type="button"
+        onClick={getUserLocation}
         className="
           bg-white/40 
           px-4 
@@ -47,7 +48,7 @@ function SearchBar({ city, setCity }) {
           transition
         "
       >
-        Search
+        Location
       </button>
     </form>
   );
