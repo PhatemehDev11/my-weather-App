@@ -68,7 +68,7 @@ function WeatherPage() {
       py-12
      ">
 
-        <SearchBar city={city} setCity={setCity}    getUserLocation={getUserLocation} />
+        <SearchBar city={city} setCity={setCity}    getUserLocation={getUserLocation}    locating={locating}/>
 
         {loading && <p className="text-white text-lg">Loading...</p>}
         {error && <p className="text-red-600">{error}</p>}
