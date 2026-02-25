@@ -19,7 +19,7 @@ async function getDate() {
     const data = await fetchWeather("Sari");
     setWeather(data);
   } catch (error) {
-    setError("Failed to fetch weather data");
+    setError("Failed to fetch weather data",error);
   } finally{
     setLoading(false)
   }
@@ -47,9 +47,12 @@ getDate();
      ">
     
     <SearchBar/>
+
     {loading && <p className="text-white text-lg">Loading...</p>}
     {error && <p className="text-red-600">{error}</p>} 
     {weather && <WeatherCard data={weather} />}
+
+
     <Forecast/>
 
 

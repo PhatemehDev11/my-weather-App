@@ -1,4 +1,13 @@
-function WeatherCard() {
+function WeatherCard({data}) {
+
+    const city = data.location.name;
+    const country = data.location.country;
+    const temp = data.current.temp_c;
+    const condition = data.current.condition.text;
+    const icon =data.current.condition.icon;
+    
+
+
     return (
       <div className="
         w-[400px]
@@ -10,15 +19,19 @@ function WeatherCard() {
         text-center
         text-white
       ">
-        <h1 className="text-7xl   text-sky-600 font-bold mb-4">26°</h1>
+        <h1 className="text-7xl   text-sky-600 font-bold mb-4">{temp}°</h1>
+
+        <img
+         src={icon}
+         alt={condition}/>
   
-        <p className="text-2xl font-semibold">Partly Cloudy</p>
-        <p className="text-lg opacity-80 mb-6">Tehran, IR</p>
+        <p className="text-2xl font-semibold">{condition}</p>
+        <p className="text-lg opacity-80 mb-6">{city}, {country}</p>
   
         <div className="border-t border-sky-600 pt-4 flex justify-between text-l font-bold">
           <span>💧 40%</span>
           <span>🌬 12 km/h</span>
-          <span>⬆ 29°</span>
+          <span>°</span>
         </div>
       </div>
     );
