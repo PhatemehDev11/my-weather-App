@@ -8,54 +8,54 @@ import { fetchWeather } from "../service/weatherApi"
 function WeatherPage() {
 
   const [city, setCity] = useState(null);
-  const [weather,setWeather] = useState(null);
-  const [loading,setLoading]  = useState(false);
-  const [error,setError] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-useEffect(()=> {
-async function getDate() {
-  try {
-    setLoading(true)
-     setError(null)
-    const data = await fetchWeather(city);
-    setWeather(data);
-  } catch (error) {
-    setError("Failed to fetch weather data",error);
-  } finally{
-    setLoading(false)
+  useEffect(() => {
+    async function getDate() {
+      try {
+        setLoading(true)
+        setError(null)
+        const data = await fetchWeather(city);
+        setWeather(data);
+      } catch (error) {
+        setError("Failed to fetch weather data", error);
+      } finally {
+        setLoading(false)
+      }
+    }
+    getDate();
+  }, [city]);
+
+
+
+
+
+  // get user Location 
+  const getUserLocation = () => {
+    if (!navigator.geolocation) {
+      setError("geoLocation not supported ")
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        setCity(`${lat},${lon}`);
+      },
+      () => {
+        setError("Unable to retrieve location")
+      }
+    )
   }
-}
-getDate();
-},[city]);
+
+  return (
+    <>
 
 
- 
-
-
-// get user Location 
-const getUserLocation = () => {
-  if (!navigator.geolocation){
-    setError("geoLocation not supported ")
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) =>{
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-
-      setCity(`${lat},${lon}`);
-    },
-   () => {
-    setError("Unable to retrieve location")
-   }
-  )
-}
-
-    return(
-   <>
-
-
-     <div  className="
+      <div className="
        min-h-screen 
       bg-gradient-to-br 
       from-sky-500 
@@ -66,21 +66,21 @@ const getUserLocation = () => {
       items-center 
       py-12
      ">
-    
-    <SearchBar city={city}  setCity={setCity}/>
 
-    {loading && <p className="text-white text-lg">Loading...</p>}
-    {error && <p className="text-red-600">{error}</p>} 
-    {weather && <WeatherCard data={weather} />}
+        <SearchBar city={city} setCity={setCity}    getUserLocation={getUserLocation} />
 
-
-    <Forecast/>
+        {loading && <p className="text-white text-lg">Loading...</p>}
+        {error && <p className="text-red-600">{error}</p>}
+        {weather && <WeatherCard data={weather} />}
 
 
-     </div>
-   </>
-    )
-    
+        <Forecast />
+
+
+      </div>
+    </>
+  )
+
 }
 
 
