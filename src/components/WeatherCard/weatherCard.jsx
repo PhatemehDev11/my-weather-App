@@ -14,7 +14,8 @@ function WeatherCard({data}) {
 
     return (
       <div className="
-        w-[400px]
+        w-[90%]
+       md:w-[400px]
         bg-white/30
         backdrop-blur-xl
         rounded-3xl

@@ -1,4 +1,4 @@
-function SearchBar({ setCity,query, setQuery,  getUserLocation }) {
+function SearchBar({ setCity, query, setQuery, getUserLocation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,16 +9,17 @@ function SearchBar({ setCity,query, setQuery,  getUserLocation }) {
     <form
       onSubmit={handleSubmit}
       className="
-        w-[600px] 
-        bg-white/30 
-        backdrop-blur-lg 
-        rounded-full 
-        shadow-lg 
-        flex 
-        items-center 
-        px-6 
-        py-3 
-        mb-10
+      w-[90%] 
+      md:w-[600px] 
+      bg-white/30 
+      backdrop-blur-lg 
+      rounded-full 
+      shadow-lg 
+      flex 
+      items-center 
+      px-4 
+      py-3 
+      m-10
       "
     >
       <input
@@ -28,7 +29,8 @@ function SearchBar({ setCity,query, setQuery,  getUserLocation }) {
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             setCity(query);
-          }}}
+          }
+        }}
         placeholder="Search city..."
         className="
           flex-1 
