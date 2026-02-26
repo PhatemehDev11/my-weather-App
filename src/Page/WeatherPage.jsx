@@ -8,6 +8,7 @@ import { CiCloudOn } from "react-icons/ci";
 function WeatherPage() {
 
   const [city, setCity] = useState("Sari");
+  const [query, setQuery] = useState("Sari"); 
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,6 +22,7 @@ function WeatherPage() {
         setError(null);
         const data = await fetchWeather(city);
         setWeather(data);
+        setCity(data.location.name);
       } catch (error) {
         setError("Failed to fetch weather data");
         console.error(error);
