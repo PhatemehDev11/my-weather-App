@@ -21,7 +21,7 @@ function Forecast({ data }) {
         >
           <p className="mb-2  text-sky-600 font-bold">
             {new Date(item.date).toLocaleDateString("en-US", {
-              weekday: "shotr",
+              weekday: "short",
             })}</p>
           <img
             src={item.day.condition.icon}
