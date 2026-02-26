@@ -7,18 +7,18 @@ function Forecast({ data }) {
         <div
           key={item.date}
           className="
-  min-w-[100px]
-  md:w-28
-  bg-white/30
-  backdrop-blur-md
-  rounded-2xl
-  shadow-lg
-  p-3
-  text-center
-  text-white
-  hover:scale-105
-  transition
-"
+           min-w-[100px]
+           md:w-28
+           bg-white/30
+           backdrop-blur-md
+           rounded-2xl
+           shadow-lg
+           p-3
+           text-center
+           text-white
+           hover:scale-105
+           transition
+           "
         >
           <p className="mb-2  text-sky-600 font-bold">
             {new Date(item.date).toLocaleDateString("en-US", {
