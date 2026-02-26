@@ -22,7 +22,7 @@ function WeatherPage() {
         setError(null);
         const data = await fetchWeather(city);
         setWeather(data);
-        setCity(data.location.name);
+        setQuery(data.location.name);
       } catch (error) {
         setError("Failed to fetch weather data");
         console.error(error);
