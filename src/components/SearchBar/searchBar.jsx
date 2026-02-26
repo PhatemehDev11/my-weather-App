@@ -1,4 +1,4 @@
-function SearchBar({ city, setCity, getUserLocation }) {
+function SearchBar({ setCity,query, setQuery,  getUserLocation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,8 +23,12 @@ function SearchBar({ city, setCity, getUserLocation }) {
     >
       <input
         type="text"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            setCity(query);
+          }}}
         placeholder="Search city..."
         className="
           flex-1 
