@@ -2,7 +2,7 @@ function Forecast({ data }) {
 
 
   return (
-    <div className="flex gap-4 mt-12 overflow-x-auto px-4">
+    <div className="flex  w-[90%]  md:w-[700px]  gap-4 mt-12 overflow-x-auto px-4">
       {data.map((item) => (
         <div
           key={item.date}
@@ -14,6 +14,7 @@ function Forecast({ data }) {
            rounded-2xl
            shadow-lg
            p-3
+           my-3
            text-center
            text-white
            hover:scale-105
