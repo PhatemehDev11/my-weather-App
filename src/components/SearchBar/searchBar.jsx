@@ -2,7 +2,7 @@ function SearchBar({ setCity,query, setQuery,  getUserLocation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!city.trim()) return;
+    if (!query.trim()) return;
   };
 
   return (

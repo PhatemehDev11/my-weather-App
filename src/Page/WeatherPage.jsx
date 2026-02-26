@@ -69,7 +69,7 @@ function WeatherPage() {
       py-12
      ">
 
-        <SearchBar city={city} setCity={setCity} getUserLocation={getUserLocation}  setQuery={setQuery} />
+        <SearchBar  query={query} setCity={setCity} getUserLocation={getUserLocation}  setQuery={setQuery} />
 
         {loading ? (
           <div className="flex justify-center items-center h-64  transition ">
