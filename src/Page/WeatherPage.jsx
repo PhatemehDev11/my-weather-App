@@ -71,8 +71,8 @@ const getUserLocation = () => {
 
         {loading ? (
           <div className="flex justify-center items-center h-64  transition ">
-             <CiCloudOn style={{ animation: "spin 3s linear infinite" }}
-              className="text-sky-500    w-[20rem]  h-[20rem]  "/>
+             <CiCloudOn
+              className="text-sky-500    w-[20rem]  h-[20rem] animate-spin-slow "/>
           </div>
         ) : (
           weather && <WeatherCard data={weather} />
