@@ -3,55 +3,53 @@ import SearchBar from "../components/SearchBar/searchBar"
 import WeatherCard from "../components/WeatherCard/weatherCard"
 import { useEffect, useState } from "react"
 import { fetchWeather } from "../service/weatherApi"
-import buloon from "../assets/buloon.gif"
 import { CiCloudOn } from "react-icons/ci";
 
 function WeatherPage() {
 
-  const [city, setCity] = useState(null);
-  const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [city, setCity] = useState("Sari");
+const [weather, setWeather] = useState(null);
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState(null);
 
+useEffect(() => {
+  if (!city) return;
 
-  useEffect(() => {
-    async function getDate() {
-      try {
-        setLoading(true)
-        setError(null)
-        const data = await fetchWeather(city);
-        setWeather(data);
-      } catch (error) {
-        setError("Failed to fetch weather data", error);
-      } finally {
-        setLoading(false)
-      }
+  async function getData() {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchWeather(city);
+      setWeather(data);
+    } catch (error) {
+      setError("Failed to fetch weather data");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-    getDate();
-  }, [city]);
-
-
-
-
-
-  // get user Location 
-  const getUserLocation = () => {
-    if (!navigator.geolocation) true;
-    setLoading(true);
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        setCity(`${lat},${lon}`);
-        setLoading(false)
-      },
-      () => {
-        setLoading(false)
-      }
-    )
   }
+
+  getData();
+}, [city]);
+
+const getUserLocation = () => {
+  if (!navigator.geolocation) {
+    setError("Geolocation not supported");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      setCity(`${lat},${lon}`);
+    },
+    () => {
+      setError("Unable to retrieve location");
+    }
+  );
+};
+
 
   return (
     <>
