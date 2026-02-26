@@ -19,7 +19,7 @@ function SearchBar({ setCity, query, setQuery, getUserLocation }) {
       items-center 
       px-4 
       py-3 
-      m-10
+      mb-10
       "
     >
       <input
