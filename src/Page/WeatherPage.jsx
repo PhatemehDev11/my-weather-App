@@ -8,47 +8,47 @@ import { CiCloudOn } from "react-icons/ci";
 function WeatherPage() {
 
   const [city, setCity] = useState("Sari");
-const [weather, setWeather] = useState(null);
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-useEffect(() => {
-  if (!city) return;
+  useEffect(() => {
+    if (!city) return;
 
-  async function getData() {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await fetchWeather(city);
-      setWeather(data);
-    } catch (error) {
-      setError("Failed to fetch weather data");
-      console.error(error);
-    } finally {
-      setLoading(false);
+    async function getData() {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await fetchWeather(city);
+        setWeather(data);
+      } catch (error) {
+        setError("Failed to fetch weather data");
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
 
-  getData();
-}, [city]);
+    getData();
+  }, [city]);
 
-const getUserLocation = () => {
-  if (!navigator.geolocation) {
-    setError("Geolocation not supported");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      setCity(`${lat},${lon}`);
-    },
-    () => {
-      setError("Unable to retrieve location");
+  const getUserLocation = () => {
+    if (!navigator.geolocation) {
+      setError("Geolocation not supported");
+      return;
     }
-  );
-};
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        setCity(`${lat},${lon}`);
+      },
+      () => {
+        setError("Unable to retrieve location");
+      }
+    );
+  };
 
 
   return (
@@ -71,18 +71,18 @@ const getUserLocation = () => {
 
         {loading ? (
           <div className="flex justify-center items-center h-64  transition ">
-             <CiCloudOn
-              className="text-sky-500    w-[20rem]  h-[20rem] animate-spin-slow "/>
+            <CiCloudOn
+              className="text-sky-500    w-[20rem]  h-[20rem] animate-spin-slow " />
           </div>
         ) : (
           weather && <WeatherCard data={weather} />
         )}
 
         {error && <p className="text-red-600">{error}</p>}
-      
 
 
-        <Forecast />
+
+        {weather && <Forecast data={weather.forecast.forecastday} />}
 
 
 
