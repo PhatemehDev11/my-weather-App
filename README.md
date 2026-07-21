@@ -116,7 +116,7 @@ https://www.weatherapi.com/
 
 ## 📸 Preview
 
-![Weather App Preview](./assets/weather-app.png)
+![Weather App Preview](./src/assets/weather-app.png)
 
 ---
 
