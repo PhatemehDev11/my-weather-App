@@ -1,8 +1,9 @@
 function Forecast({ data }) {
 
+ 
 
   return (
-    <div className="flex  w-[90%]  md:w-[700px]  gap-4 mt-12 overflow-x-auto px-4">
+    <div className="flex    w-[90%]  md:w-[400px]  gap-4 mt-12 overflow-x-auto px-4">
       {data.map((item) => (
         <div
           key={item.date}
