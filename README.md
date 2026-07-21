@@ -1,16 +1,125 @@
-# React + Vite
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)
+![PWA](https://img.shields.io/badge/PWA-Enabled-5A0FC8)
+![Netlify Status](https://img.shields.io/badge/Hosted%20on-Netlify-00C7B7?logo=netlify)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🌤️ Weather App
 
-Currently, two official plugins are available:
+A modern, responsive, and installable **Progressive Web App (PWA)** built with **React**, **Vite**, and **Tailwind CSS**. It allows users to search for any city or use their current location to view real-time weather information and forecast data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+🔗 https://myweatherappmeow.netlify.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔍 Search weather by city name
+- 📍 Get weather using the device's current location
+- 🌡️ Display current temperature
+- ☁️ Show weather conditions with dynamic icons
+- 💨 Wind speed
+- 💧 Humidity
+- 🌡️ Feels-like temperature
+- 📅 Multi-day weather forecast *(depending on the WeatherAPI plan)*
+- 📱 Fully responsive design
+- ✨ Modern glassmorphism UI
+- ⚡ Progressive Web App (PWA)
+- 📥 Installable on desktop and mobile devices
+
+---
+
+## 🛠️ Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- WeatherAPI
+- React Icons
+- Vite PWA Plugin
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│── components/
+│   ├── Forecast/
+│   ├── SearchBar/
+│   └── WeatherCard/
+│
+│── pages/
+│   └── WeatherPage.jsx
+│
+│── service/
+│   └── weatherApi.js
+│
+└── App.jsx
+```
+
+
+
+## 📦 Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your-username/weather-app.git
+```
+
+### Navigate to the project
+
+```bash
+cd weather-app
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Create a `.env` file
+
+```env
+VITE_WEATHER_API_KEY=YOUR_API_KEY
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🌐 Deployment
+
+This project is deployed on **Netlify**.
+
+**Live Demo:** https://myweatherappmeow.netlify.app
+
+---
+
+## 🔑 API
+
+Weather data is provided by **WeatherAPI**.
+
+https://www.weatherapi.com/
+
+> **Note:** The number of forecast days depends on your WeatherAPI subscription plan.
+
+---
+
+## 📸 Preview
+
+
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
